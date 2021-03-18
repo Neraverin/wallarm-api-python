@@ -1,6 +1,6 @@
-import requests
-
 from wallarm_api.core.api.clients_api import ClientsApi
+from wallarm_api.core.api.billing_api import BillingApi
+from wallarm_api.core.api.graph_api import GraphApi
 
 
 class WallarmAPI:
@@ -10,3 +10,5 @@ class WallarmAPI:
         self.__secret = secret
         self.__api = api
         self.clients_api = ClientsApi(uuid, secret, host=api)
+        self.billing_api = BillingApi(uuid, secret, host=api)
+        self.graph_api = GraphApi(uuid, secret, host=api)

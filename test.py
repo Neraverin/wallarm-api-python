@@ -12,5 +12,8 @@ def get_env():
 if __name__ == '__main__':
     api_UUID, api_secret = get_env()
     api = WallarmAPI(api_UUID, api_secret)
-    client = api.clients_api.get_client()
-    print(f'client_id = ', client.id)
+    client_id = api.clients_api.get_client().id
+    print(f'client_id = ', client_id)
+    print(f'subscription = ', api.billing_api.get_subscription(client_id))
+    print(f'dashboard_state = ', api.graph_api.get_dashboard_state(client_id))
+
