@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
-"""This script offers to work with Wallarm Cloud API"""
-
 import requests
+
+from wallarm_api.core.api.clients_api import ClientsApi
 
 
 class WallarmAPI:
@@ -10,8 +9,10 @@ class WallarmAPI:
         self.__uuid = uuid
         self.__secret = secret
         self.__api = api
-        self.client_id = self.get_client_id()
+        self.client_id = self.get_client_id(self)
+        self.clients_api = ClientsApi(uuid, secret, host=api)
 
+    @staticmethod
     def get_client_id(self):
         """The method to fetch a clientid for some queries"""
 
