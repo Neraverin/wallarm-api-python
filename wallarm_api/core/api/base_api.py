@@ -5,17 +5,17 @@ from wallarm_api.core.clients.response_handler import DefaultJsonContentHandler,
 
 class BaseApi:
     def __init__(self, uuid, secret, host, *args, **kwargs):
-        self.client_no_auth = BareHttpClient(
+        self.client = BareHttpClient(
             host,
             default_headers={
                 "X-WallarmAPI-UUID": uuid,
                 "X-WallarmAPI-Secret": secret
             }
         )
-        self.client_no_auth.add_content_handler(DefaultJsonContentHandler())
-        self.client_no_auth.add_errors_handler(OKStatusHandler())
-        self.client_no_auth.add_errors_handler(NOKStatusHandler())
-        self.client_no_auth.add_errors_handler(ErrorStatusHandler())
+        self.client.add_content_handler(DefaultJsonContentHandler())
+        self.client.add_errors_handler(OKStatusHandler())
+        self.client.add_errors_handler(NOKStatusHandler())
+        self.client.add_errors_handler(ErrorStatusHandler())
 
     @staticmethod
     def make_filter(**kwargs):
