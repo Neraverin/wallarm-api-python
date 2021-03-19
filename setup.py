@@ -3,13 +3,13 @@ from setuptools import setup
 setup(
     name='wallarm_api',
     packages=['wallarm_api'],
-    version='0.3',
+    version='0.5',
     license='Apache license 2.0',
     description='Wallarm API client',
     author='Vladimir Salykin',
     author_email='neraverin@gmail.com',
     url='https://github.com/Neraverin/wallarm-api-python',
-    download_url='https://github.com/Neraverin/wallarm-api-python/archive/v0.3-alpha.tar.gz',
+    download_url='https://github.com/Neraverin/wallarm-api-python/archive/v0.5.tar.gz',
     keywords=['Wallarm', 'API client'],
     install_requires=[
         'requests',
