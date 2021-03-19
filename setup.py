@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='wallarm_api',
@@ -14,6 +14,8 @@ setup(
     install_requires=[
         'requests',
     ],
+    setup_requires=['wheel'],
+    python_requires='>=3.6, <4',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
