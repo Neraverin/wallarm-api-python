@@ -1,8 +1,10 @@
 import time
+import datetime
 
 
 from wallarm_api.core.api.base_api import BaseApi
 from wallarm_api.core.models.dashboard import DashboardState
+from wallarm_api.core.models.graph_data import GraphSummaryMonthly
 
 
 class GraphApi(BaseApi):
@@ -69,3 +71,15 @@ class GraphApi(BaseApi):
         url = f'/v2/dashboard_state/{clientid}'
         response = self.client.get(url=url)
         return DashboardState(**response['body']['object'])
+
+    def get_requests_summary_monthly(self, client_id=None, year=None, month=None):
+        url = f'/v2/graph_data/summary/monthly/total/client/{client_id}'
+        if year is None or month is None:
+            now = datetime.datetime.now()
+            year = now.year
+            month = now.month
+        params = {
+            "year": year, "month": month,
+        }
+        response = self.client.post(url=url, json=params)
+        return GraphSummaryMonthly(**response['body'])
