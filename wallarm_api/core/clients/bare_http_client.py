@@ -1,8 +1,8 @@
 import logging
 from urllib.parse import urlparse
 
-
 import requests
+import urllib3
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
@@ -25,6 +25,8 @@ class BareHttpClient:
         self._content_handler = None
         self._last_content_handler = None
         self._logger = logging.getLogger(__name__)
+
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     @property
     def logger(self):
