@@ -61,3 +61,4 @@ class Client(BaseModel):
     blacklist_disabled_at: datetime = None
     ngenixids: List[int] = []
     qratorids: List[int] = []
+    is_technical: bool = None
