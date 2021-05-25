@@ -16,3 +16,5 @@ class Hint(BaseModel):
     point: list = None
     counter: str = None
     comment: str = None
+    mode: str = None
+    parser: str = None

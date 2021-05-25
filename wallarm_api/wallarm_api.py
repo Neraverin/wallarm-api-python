@@ -2,6 +2,7 @@ from wallarm_api.core.api.clients_api import ClientsApi
 from wallarm_api.core.api.billing_api import BillingApi
 from wallarm_api.core.api.graph_api import GraphApi
 from wallarm_api.core.api.hints_api import HintsApi
+from wallarm_api.core.api.users_api import UsersApi
 
 
 class WallarmAPI:
@@ -14,3 +15,4 @@ class WallarmAPI:
         self.billing_api = BillingApi(uuid, secret, host=api)
         self.graph_api = GraphApi(uuid, secret, host=api)
         self.hints_api = HintsApi(uuid, secret, host=api)
+        self.users_api = UsersApi(uuid, secret, host=api)
