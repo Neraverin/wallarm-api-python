@@ -4,6 +4,7 @@ from wallarm_api.core.api.graph_api import GraphApi
 from wallarm_api.core.api.hints_api import HintsApi
 from wallarm_api.core.api.users_api import UsersApi
 from wallarm_api.core.api.vulnerabilities_api import VulnerabilitiesApi
+from wallarm_api.core.api.integrations_api import IntegrationsApi
 
 
 class WallarmAPI:
@@ -18,3 +19,4 @@ class WallarmAPI:
         self.hints_api = HintsApi(uuid, secret, host=api)
         self.users_api = UsersApi(uuid, secret, host=api)
         self.vulns_api = VulnerabilitiesApi(uuid, secret, host=api)
+        self.integrations_api = IntegrationsApi(uuid, secret, host=api)
