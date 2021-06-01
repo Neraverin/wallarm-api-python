@@ -1,3 +1,5 @@
+from weakref import WeakValueDictionary
+from wallarm_api.core.api.attacks_api import AttacksApi
 from wallarm_api.core.api.clients_api import ClientsApi
 from wallarm_api.core.api.billing_api import BillingApi
 from wallarm_api.core.api.graph_api import GraphApi
@@ -6,10 +8,20 @@ from wallarm_api.core.api.users_api import UsersApi
 from wallarm_api.core.api.vulnerabilities_api import VulnerabilitiesApi
 from wallarm_api.core.api.integrations_api import IntegrationsApi
 
+class Singleton(type):
+    _instances = WeakValueDictionary()
 
-class WallarmAPI:
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            instance = super(Singleton, cls).__call__(*args, **kwargs)
+            cls._instances[cls] = instance
 
-    def __init__(self, uuid='', secret='', api='https://api.wallarm.com'):
+        return cls._instances[cls]
+
+
+class WallarmAPI(metaclass=Singleton):
+
+    def __init__(self, uuid: str, secret: str, api: str):
         self.__uuid = uuid
         self.__secret = secret
         self.__api = api
@@ -20,3 +32,4 @@ class WallarmAPI:
         self.users_api = UsersApi(uuid, secret, host=api)
         self.vulns_api = VulnerabilitiesApi(uuid, secret, host=api)
         self.integrations_api = IntegrationsApi(uuid, secret, host=api)
+        self.attacks_api = AttacksApi(uuid, secret, host=api)
