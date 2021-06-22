@@ -18,3 +18,4 @@ class Hint(BaseModel):
     comment: str = None
     mode: str = None
     parser: str = None
+    stamp: int = None

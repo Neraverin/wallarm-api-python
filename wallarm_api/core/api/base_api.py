@@ -20,6 +20,9 @@ class BaseApi:
     @staticmethod
     def make_filter(**kwargs):
         attack_filter_json = {}
+        if 'non_args' in kwargs.keys():
+            attack_filter_json.update(kwargs['non_args'])
+            kwargs.pop('non_args')
         for i in kwargs:
             if i in ('attackid', 'hitid'):
                 if type(kwargs[i]) == str:
