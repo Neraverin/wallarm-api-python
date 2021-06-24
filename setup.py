@@ -1,8 +1,7 @@
 # Setup file
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    packages=['wallarm_api'],
     name='wallarm_api',
     version='0.8',
     license='Apache license 2.0',
@@ -26,4 +25,7 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python :: 3.6',
     ],
+    packages=find_packages(),
+    include_package_data=True,
+    zip_safe=False,
 )
