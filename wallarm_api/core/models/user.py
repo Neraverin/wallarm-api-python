@@ -15,7 +15,7 @@ class LoginHistory(BaseModel):
 class User(BaseModel):
     id: int
     email: str
-    password: str
+    password: str = None
     clientid: int
     uuid: str
     permissions: List[str] #List[Role]
