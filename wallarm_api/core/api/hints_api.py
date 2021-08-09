@@ -16,7 +16,7 @@ class HintsApi(BaseApi):
                 response_list.append(Hint(**hint))
             return response_list
 
-    def get_lom_version(self, clienid):
-        url = f'/v2/lom_version/{clienid}'
+    def get_lom_version(self, clientid):
+        url = f'/v2/lom_version/{clientid}'
         response = self.client.get(url=url)
         return response

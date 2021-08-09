@@ -18,7 +18,7 @@ class User(BaseModel):
     password: str = None
     clientid: int
     uuid: str
-    permissions: List[str] #List[Role]
+    permissions: List[str]
     actual_permissions: List[str]
     mfa_enabled: bool
     create_by: datetime = None
