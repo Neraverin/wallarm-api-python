@@ -8,6 +8,7 @@ from wallarm_api.core.api.users_api import UsersApi
 from wallarm_api.core.api.vulnerabilities_api import VulnerabilitiesApi
 from wallarm_api.core.api.integrations_api import IntegrationsApi
 from wallarm_api.core.api.triggers_api import TriggersApi
+from wallarm_api.core.api.audit_log_api import AuditLogApi
 
 class Singleton(type):
     _instances = WeakValueDictionary()
@@ -35,3 +36,4 @@ class WallarmAPI(metaclass=Singleton):
         self.integrations_api = IntegrationsApi(uuid, secret, host=api)
         self.attacks_api = AttacksApi(uuid, secret, host=api)
         self.triggers_api = TriggersApi(uuid, secret, host=api)
+        self.audit_log_api = AuditLogApi(uuid, secret, host=api)
