@@ -15,6 +15,7 @@ class Diff(BaseModel):
 class Log(BaseModel):
     action: Action
     diff: Diff
+    entity: dict = None
     subject_id: Union[int, str]
     subject_clientid: int
     object_type: ObjectType
