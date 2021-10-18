@@ -7,7 +7,7 @@ class Hint(BaseModel):
     clientid: int
     action: list
     create_time: int
-    create_userid: int
+    create_userid: int = None
     validated: bool
     system: bool
     regex_id: str = None
@@ -19,3 +19,4 @@ class Hint(BaseModel):
     mode: str = None
     parser: str = None
     stamp: int = None
+    attack_type: str = None
